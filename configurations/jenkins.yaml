@@ -13,7 +13,7 @@ jenkins:
   - envVars:
       env:
       - key: "VARIABLE1"
-        value: "helloworld2"
+        value: "helloworld3"
   labelAtoms:
   - name: "built-in"
   markupFormatter: "plainText"
