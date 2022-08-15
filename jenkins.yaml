@@ -13,7 +13,7 @@ jenkins:
   - envVars:
       env:
       - key: "VARIABLE1"
-        value: "helloworld"
+        value: "helloworld2"
   labelAtoms:
   - name: "built-in"
   markupFormatter: "plainText"
@@ -52,7 +52,7 @@ beekeeper:
 license:
   certificate: |
     -----BEGIN CERTIFICATE-----
-    MIIRTDCCEDSgAwIBAgIGAYKiKemvMA0GCSqGSIb3DQEBBQUAMIICdDERMA8GCisG
+    MIIRTDCCEDSgAwIBAgIGAYKiVBufMA0GCSqGSIb3DQEBBQUAMIICdDERMA8GCisG
     AQQBgql/AQETATMxMDAuBgorBgEEAYKpfwECEyBlNjIwODY2YmE3ZjZjNzIxNTA2
     N2ZlZDRmMjI2ZjFlNjEVMBMGCysGAQQBgql/AQsOEwR0cnVlMRUwEwYLKwYBBAGC
     qX8BCw0TBHRydWUxFTATBgsrBgEEAYKpfwELEBMEdHJ1ZTEVMBMGCysGAQQBgql/
@@ -66,7 +66,7 @@ license:
     CysGAQQBgql/AQsVEwR0cnVlMRMwEQYKKwYBBAGCqX8BAxMDMTAwMRUwEwYKKwYB
     BAGCqX8BDhMFMTAwMDAxFTATBgorBgEEAYKpfwEJEwVmYWxzZTESMBAGA1UEAxMJ
     Y2xvdWRiZWVzMQkwBwYDVQQLEwAxFjAUBgsrBgEEAYKpfwELGBMFZmFsc2UwHhcN
-    MjIwODE1MTQ0MDMyWhcNMjIwODE4MTY0MDMyWjCCAp0xEjAQBgNVBAMMCWNsb3Vk
+    MjIwODE1MTUyNjM3WhcNMjIwODE4MTcyNjM3WjCCAp0xEjAQBgNVBAMMCWNsb3Vk
     YmVlczESMBAGA1UECwwJY2xvdWRiZWVzMREwDwYKKwYBBAGCqX8BAQwBMzEwMC4G
     CisGAQQBgql/AQIMIGI1YWRiNjViODk4ZjYxZmY2MzZmNjUyMzQ2NDgxM2UxMTQw
     MgYKKwYBBAGCqX8BBgwkZjg0MDRjZTktNjRkZi00OGQ3LTlmYzctMjA4YTEwNzRk
@@ -139,12 +139,12 @@ license:
     WDR6YmRkMXMyQWtVTk5QWFZkM0YrMmFwbzFGM1RZaitLTk9nb1JPejVMTy9La0tC
     Ymw4Q2ZZWgpoei9weWQxaXJEVldPeVI3M1JOakRpSTh1UmFtZmV3SDEzaCsrdz09
     Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KCjANBgkqhkiG9w0BAQUFAAOCAQEA
-    lIV47+ZjunjOymINzWIgx1n/fQnCF+0vW6bYeSnMDRyMy4L3/9I+Pd0UtL1FYTq+
-    L0rLvG1xTScvtuwtSMStO3reOdUJRQc58tFtLVKRDfceSMxqqFz9lCaEjmkMJqr3
-    s4tHYDzH0lr/Ftu575cRBekIW3wwbzCy75R6P7psNhlVBVqHBdrvDNWOhHc6MMte
-    g6HFpY6DJK34ApC+PMzWOfSknJk3V62aEwwI9LRuY47UB8PWl7RgQcu85+lZldTc
-    yRrN/sXcfcABKV+OtjOcTRSseu9fDi4EuFEFN8qpD5GNumO2akJF42BRd7X1w+/A
-    uCEvYi5tIBmrIxEzztXdxA==
+    YWm4c9YH5urEqnTZkmLvUMUVjWdBt42428wMebFJEZN5qTVSmtuYyaaByGJ+UTy/
+    a7zEBrQr7mDOQFDYFhC1iuvjpj13KqtU7Ah9mB9ZEcnfQPwOutYCCx2RD8QUaN/q
+    AhEa05EA1P6GaRhOee/oMz6ba9PSVgm8ksoHJViKurGeIX4ThkXTiMO+Nkj5gIOF
+    dXUHU284oqNj4aCe/Lu9l1bmCCVDlP7dkbFOxTUJqw9bVC/4WoN/5mdujDVyrjyh
+    +2qw4Xm5rrQUcA7awofsdHJPL2Q8RNHgqBDtfC+J93LmPbdonHzj3Wd1D83NJ79m
+    Mb6VtzJK8xzXe5izcPmTGw==
     -----END CERTIFICATE-----
   key: |
     -----BEGIN RSA PRIVATE KEY-----
@@ -244,6 +244,8 @@ unclassified:
   buildDiscarders:
     configuredBuildDiscarders:
     - "jobBuildDiscarder"
+  casCGlobalConfig:
+    configurationPath: "/var/lib/cloudbees-core-cm/casc-configs/jenkins.yml"
   cloudBeesSCMReporting:
     enabled: true
   email-ext:
@@ -295,12 +297,9 @@ unclassified:
     useSsl: false
     useTls: false
   operationsCenterRootAction:
-    connectionDetails: |-
-      ----- BEGIN CONNECTION DETAILS -----
-      H4sIAAAAAAAAAA2NSQ7CMAwA/+IzTuLIbZx8gxekWQBRFrVBHFD/juc20kjzg8uWnwMSdGHHpUWc
-      uXZkqQFjLwG9k0wucJ1Z4AS3qq3D8iCVz7aqXcd4J2snNsSTIR+NJ06iWG2+bTm/yr3po+d1b8cf
-      LAEpRnMAAAA=
-      ----- END CONNECTION DETAILS -----
+    connectionDetails: "----- BEGIN CONNECTION DETAILS -----\nH4sIAAAAAAAAAA2NSQ7CMAwA/+IzTuLIbZx8gxekWQBRFrVBHFD/juc20kjzg8uWnwMSdGHHpUWc\r\
+      \nuXZkqQFjLwG9k0wucJ1Z4AS3qq3D8iCVz7aqXcd4J2snNsSTIR+NJ06iWG2+bTm/yr3po+d1b8cf\r\
+      \nLAEpRnMAAAA=\r\n----- END CONNECTION DETAILS -----\n"
   pollSCM:
     pollingThreadCount: 10
   usageStatisticsCloudBees:
