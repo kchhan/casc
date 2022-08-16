@@ -1,6 +1,7 @@
 plugins:
 - id: ace-editor
 - id: apache-httpcomponents-client-4-api
+- id: authentication-tokens
 - id: aws-credentials
 - id: aws-java-sdk-ec2
 - id: aws-java-sdk-minimal
@@ -17,11 +18,12 @@ plugins:
 - id: cloudbees-blueocean-default-theme
 - id: cloudbees-casc-client
 - id: cloudbees-casc-items-api
+- id: cloudbees-casc-items-commons
+- id: cloudbees-casc-items-controller
 - id: cloudbees-folder
 - id: cloudbees-folders-plus
 - id: cloudbees-github-reporting
 - id: cloudbees-groovy-view
-- id: cloudbees-ha
 - id: cloudbees-jenkins-advisor
 - id: cloudbees-jsync-archiver
 - id: cloudbees-license
@@ -49,6 +51,7 @@ plugins:
 - id: font-awesome-api
 - id: git
 - id: git-client
+- id: git-server
 - id: github
 - id: github-api
 - id: github-branch-source
@@ -65,6 +68,10 @@ plugins:
 - id: jquery3-api
 - id: jsch
 - id: junit
+- id: kube-agent-management
+- id: kubernetes
+- id: kubernetes-client-api
+- id: kubernetes-credentials
 - id: ldap
 - id: mailer
 - id: mapdb-api
@@ -74,6 +81,7 @@ plugins:
 - id: nectar-license
 - id: nectar-rbac
 - id: node-iterator-api
+- id: oauth-credentials
 - id: okhttp-api
 - id: operations-center-agent
 - id: operations-center-client
@@ -81,7 +89,6 @@ plugins:
 - id: operations-center-context
 - id: pipeline-build-step
 - id: pipeline-graph-analysis
-- id: pipeline-groovy-lib
 - id: pipeline-input-step
 - id: pipeline-milestone-step
 - id: pipeline-model-api
@@ -104,6 +111,7 @@ plugins:
 - id: support-core
 - id: token-macro
 - id: trilead-api
+- id: unique-id
 - id: user-activity-monitoring
 - id: variant
 - id: workflow-aggregator
@@ -111,6 +119,7 @@ plugins:
 - id: workflow-basic-steps
 - id: workflow-cps
 - id: workflow-cps-checkpoint
+- id: workflow-cps-global-lib
 - id: workflow-durable-task-step
 - id: workflow-job
 - id: workflow-multibranch
