@@ -9,6 +9,11 @@ jenkins:
     standard:
       excludeClientIPFromCrumb: false
   disableRememberMe: false
+  globalNodeProperties:
+  - envVars:
+      env:
+      - key: "VARIABLE1"
+        value: "world"
   labelAtoms:
   - name: "built-in"
   markupFormatter: "plainText"
