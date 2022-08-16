@@ -1,0 +1,7 @@
+apiVersion: "1"
+id: "mm2-child"
+description: "Child Bundle for mm2"
+version: "1"
+parent: "casc-mm"
+jcasc:
+  - "jenkins.yaml"
