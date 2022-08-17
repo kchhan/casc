@@ -4,3 +4,11 @@ jenkins:
       env:
       - key: "VARIABLE2"
         value: "foobar"
+unclassified:
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - simpleBuildDiscarder:
+        discarder:
+          logRotator:
+            daysToKeepStr: "2"
+            numToKeepStr: "2"
