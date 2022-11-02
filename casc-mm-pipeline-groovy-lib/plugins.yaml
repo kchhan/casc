@@ -89,7 +89,6 @@ plugins:
 - id: operations-center-context
 - id: pipeline-build-step
 - id: pipeline-graph-analysis
-- id: pipeline-groovy-lib
 - id: pipeline-input-step
 - id: pipeline-milestone-step
 - id: pipeline-model-api
