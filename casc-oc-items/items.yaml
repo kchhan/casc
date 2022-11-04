@@ -1,0 +1,156 @@
+kind: folder
+name: ClusterJobs
+description: ''
+displayName: ClusterJobs
+healthMetrics:
+- worstChildHealthMetric:
+    recursive: true
+- averageChildHealthMetric: {
+    }
+- jobStatusHealthMetric:
+    unstable: true
+    countVirginJobs: false
+    failure: true
+    success: true
+    unbuilt: true
+- projectEnabledHealthMetric: {
+    }
+items:
+- kind: backupAndRestore
+  name: BackupCjoc
+  blockBuildWhenDownstreamBuilding: false
+  blockBuildWhenUpstreamBuilding: false
+  buildersList:
+  - backupBuilder:
+      subjects:
+      - buildRecordSubject: {
+          }
+      - jobConfigurationSubject: {
+          }
+      - systemConfigurationSubject:
+          omitMasterKey: false
+      format:
+        tarGzFormat: {
+          }
+      exclusive: false
+      store:
+        s3Store:
+          bucketName: app-id-107647-dep-id-108485-uu-id-6u6u0xwgo0qr
+          sse: false
+          bucketFolder: jetstream-useast1-d3/cjoc
+          credentialsId: ''
+          region: us-east-1
+      retentionPolicy:
+        upToNRetentionPolicy:
+          n: 10
+      safeDelaySeconds: 0
+  concurrentBuild: false
+  description: ''
+  disabled: false
+  displayName: BackupCjoc
+  triggers:
+  - cron:
+      spec: 0 10 * * *
+- kind: freeStyle
+  name: get-api-token
+  blockBuildWhenDownstreamBuilding: false
+  blockBuildWhenUpstreamBuilding: false
+  buildWrappers:
+  - secretBuildWrapper:
+      bindings:
+      - string:
+          variable: API_TOKEN
+          credentialsId: /application/julescloud-control-plane/jetstream-d3-dev-token
+  builders:
+  - remoteTriggerBuilder:
+      configList:
+      - remoteTriggerConfig:
+          mode:
+            fireAndForget: {
+              }
+          parameterFactories:
+          - evaluatedString:
+              expression: ${API_TOKEN}
+              name: API_TOKEN
+          remotePathMissing:
+            continueAsFailure: {
+              }
+          remotePathUrl: jenkins://536d0183835f20b1e77a712473d3efb2/ClusterJobs/sync-api-token
+  concurrentBuild: false
+  description: ''
+  disabled: false
+  displayName: get-api-token
+  scm:
+    none: {
+      }
+  scmCheckoutStrategy:
+    standard: {
+      }
+  triggers:
+  - cron:
+      spec: H/15 * * * *
+- kind: clusterOpProject
+  name: sync-api-token
+  allProperties:
+  - parameters:
+      parameterDefinitionNames:
+      - API_TOKEN
+      parameterDefinitions:
+      - password:
+          defaultValueAsSecret: '{AQAAABAAAAAQLyf8tCN6SVspdcqUswfFb0NRK9wvF3b7I3NfKiwx3ds=}'
+          defaultValue: ''
+          name: API_TOKEN
+  concurrentBuild: false
+  description: ''
+  disabled: false
+  displayName: sync-api-token
+  operations:
+  - managedMasterClusterOperation:
+      failureMode: IMMEDIATELY
+      clusterOpSteps:
+      - masterGroovyClusterOpStep:
+          script: |-
+            import hudson.model.User
+            import jenkins.security.ApiTokenProperty
+
+
+            String ENCODED_TOKEN = API_TOKEN.replaceAll(".*\\:\"|\\\"}.*", "");
+
+            println "TOKEN in AWS Secrets Manager: $ENCODED_TOKEN"
+
+            byte[] DECODED_TOKEN = ENCODED_TOKEN.decodeBase64()
+            println new String(DECODED_TOKEN)
+
+            String JENKINS_API_TOKEN = new String(DECODED_TOKEN).split(':')[1];
+
+            println "Final Jenkins API Token : $JENKINS_API_TOKEN"
+
+
+            // assign to user
+            String userName = "O063362"
+            String tokenName = "api-token"
+            User user = User.get(userName)
+            user.addProperty(new ApiTokenProperty());
+            user.getProperty(ApiTokenProperty.class).addFixedNewToken(tokenName, JENKINS_API_TOKEN);
+      timeoutSeconds: 0
+      itemSource:
+        jenkinsRootItemSource: {
+          }
+      filters:
+      - isMasterOnlineFilter: {
+          }
+      inParallel: 0
+      noRetries: 0
+  scm:
+    none: {
+      }
+  scmCheckoutStrategy:
+    standard: {
+      }
+properties:
+- envVars: {
+    }
+- kubernetesFolderProperty: {
+    }
+- itemRestrictions:
+    filter: false
