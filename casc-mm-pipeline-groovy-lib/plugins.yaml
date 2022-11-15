@@ -1,10 +1,8 @@
 plugins:
 - id: ace-editor
+- id: antisamy-markup-formatter
 - id: apache-httpcomponents-client-4-api
 - id: authentication-tokens
-- id: aws-credentials
-- id: aws-java-sdk-ec2
-- id: aws-java-sdk-minimal
 - id: blueocean-commons
 - id: bootstrap4-api
 - id: bootstrap5-api
@@ -60,8 +58,6 @@ plugins:
 - id: handy-uri-templates-2-api
 - id: infradna-backup
 - id: jackson2-api
-- id: javax-activation-api
-- id: javax-mail-api
 - id: jaxb
 - id: jdk-tool
 - id: jjwt-api
@@ -83,10 +79,6 @@ plugins:
 - id: node-iterator-api
 - id: oauth-credentials
 - id: okhttp-api
-- id: operations-center-agent
-- id: operations-center-client
-- id: operations-center-cloud
-- id: operations-center-context
 - id: pipeline-build-step
 - id: pipeline-graph-analysis
 - id: pipeline-input-step
@@ -114,6 +106,7 @@ plugins:
 - id: unique-id
 - id: user-activity-monitoring
 - id: variant
+- id: wikitext
 - id: workflow-aggregator
 - id: workflow-api
 - id: workflow-basic-steps
