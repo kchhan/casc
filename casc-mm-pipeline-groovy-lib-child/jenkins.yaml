@@ -1,0 +1,13 @@
+unclassified:
+  globalLibraries:
+    libraries:
+      - allowVersionOverride: false
+        defaultVersion: "jir/initial_commit"
+        name: "cmd-pipeline"
+        retriever:
+          modernSCM:
+            scm:
+              git:
+                remote: "https://github.com/example/example.git"
+                traits:
+                  - "gitBranchDiscovery"
