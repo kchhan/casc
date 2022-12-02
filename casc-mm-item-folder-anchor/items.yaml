@@ -1,12 +1,14 @@
 x-orphanedItemStrategy: &orphanedItemStrategy
   defaultOrphanedItemStrategy:
     pruneDeadBranches: true
-    daysToKeep: 7
+    daysToKeep: 14
     numToKeep: -1
     abortBuilds: false
+
 removeStrategy:
   rbac: SYNC
   items: NONE
+
 items:
 - kind: folder
   name: folder1
