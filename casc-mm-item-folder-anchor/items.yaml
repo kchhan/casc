@@ -1,4 +1,4 @@
-x-orphanedItemStrategy:
+x-orphanedItemStrategy: &orphanedItemStrategy
   defaultOrphanedItemStrategy:
     pruneDeadBranches: true
     daysToKeep: 7
@@ -17,12 +17,7 @@ items:
     name: multibranch
     description: ''
     displayName: multibranch
-    orphanedItemStrategy:
-      defaultOrphanedItemStrategy:
-        pruneDeadBranches: true
-        daysToKeep: 7
-        numToKeep: -1
-        abortBuilds: false
+    orphanedItemStrategy: *orphanedItemStrategy
     projectFactory:
       workflowBranchProjectFactory:
         scriptPath: Jenkinsfile
