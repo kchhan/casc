@@ -1,0 +1,31 @@
+x-orphanedItemStrategy: &orphanedItemStrategy
+  defaultOrphanedItemStrategy:
+    pruneDeadBranches: true
+    daysToKeep: 14
+    numToKeep: -1
+    abortBuilds: false
+
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+
+items:
+- kind: folder
+  name: folder1
+  description: ''
+  displayName: folder1
+  items:
+  - kind: multibranch
+    name: multibranch
+    description: ''
+    displayName: multibranch
+    orphanedItemStrategy: *orphanedItemStrategy
+    projectFactory:
+      workflowBranchProjectFactory:
+        scriptPath: Jenkinsfile
+    properties:
+    - envVars: {}
+  properties:
+  - envVars: {}
+  - itemRestrictions:
+      filter: false
