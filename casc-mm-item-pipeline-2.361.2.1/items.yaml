@@ -1,0 +1,48 @@
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+items:
+- kind: pipeline
+  name: somepipeline
+  concurrentBuild: true
+  definition:
+    cpsScmFlowDefinition:
+      scriptPath: Jenkinsfile
+      scm:
+        gitSCM:
+          userRemoteConfigs:
+          - userRemoteConfig:
+              url: https://github.com/kchhan/pipeline-helloworld.git
+          branches:
+          - branchSpec:
+              name: '*/master'
+      lightweight: true
+  description: ''
+  disabled: false
+  displayName: somepipelinedisplayname
+  properties:
+  - buildDiscarder:
+      strategy:
+        logRotator:
+          artifactDaysToKeep: -1
+          artifactNumToKeep: -1
+          daysToKeep: -1
+          numToKeep: -1
+  - parameters:
+      parameterDefinitions:
+      - booleanParam:
+          defaultValue: false
+          name: BOOLPARAM
+          description: boolparamvalue
+      - string:
+          trim: false
+          defaultValue: one
+          name: STRINGPARAM
+          description: stringparamvalue
+      - choice:
+          name: CHOICEPARAM
+          choices:
+          - choiceA
+          - choiceB
+          - choiceC
+  resumeBlocked: false
