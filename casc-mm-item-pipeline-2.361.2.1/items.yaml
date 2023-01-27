@@ -46,3 +46,43 @@ items:
           - choiceB
           - choiceC
   resumeBlocked: false
+- kind: pipeline
+  name: thispipeline2
+  concurrentBuild: true
+  definition:
+    cpsScmFlowDefinition:
+      scriptPath: Jenkinsfile.eod
+      scm:
+        gitSCM:
+          userRemoteConfigs:
+          - userRemoteConfig:
+              url: https://github.com/kchhan/pipeline-helloworld.git
+          branches:
+          - branchSpec:
+              name: '*/master'
+      lightweight: true
+  description: ''
+  disabled: false
+  displayName: thispipeline2displayname
+  properties:
+  - buildDiscarder:
+      strategy:
+        logRotator:
+          artifactDaysToKeep: -1
+          artifactNumToKeep: -1
+          daysToKeep: -1
+          numToKeep: -1
+  - parameters:
+      parameterDefinitions:
+      - choice:
+          name: CHOISEPARAM
+          description: description for CHOICEPARAM
+          choices:
+          - choiceA
+          - choiceB
+          - choiceC
+      - booleanParam:
+          defaultValue: false
+          name: BOOLPARAM
+          description: description for BOOLPARAM
+  resumeBlocked: false
