@@ -1,0 +1,7 @@
+apiVersion: "1"
+id: "mm2-dev"
+description: "dev"
+version: "1"
+parent: "casc-mm"
+jcasc:
+  - "jenkins.yaml"
